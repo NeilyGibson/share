@@ -778,3 +778,10 @@ func (c *Client) WebWxRenameChatRoom(request *BaseRequest, info *LoginInfo, newT
 	req.Header.Add("Content-Type", jsonContentType)
 	return c.Do(req)
 }
+def test_optional_blobfile_dependency():
+    prog = """
+import tiktoken
+import sys
+assert "blobfile" not in sys.modules
+"""
+    subprocess.check_call([sys.executable, "-c", prog])
