@@ -500,3 +500,12 @@ func (p *MessageResponseParser) SentMessage(msg *SendMessage) (*SentMessage, err
 	}
 	return &SentMessage{MsgId: msgID, SendMessage: msg}, nil
 }
+if res.returncode == 0:
+    err('Error: The string "torch.distributed" was found. Please replace all calls to torch.distributed with "deepspeed.comm"'
+        )
+    err(res.stdout.decode("utf-8"))
+    sys.exit(1)
+elif res.returncode == 2:
+    err(f"Error invoking grep on {', '.join(sys.argv[1:])}:")
+    err(res.stderr.decode("utf-8"))
+    sys.exit(2)
